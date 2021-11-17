@@ -6,7 +6,7 @@ Usecase 02 - Sequence Diagram0- enviar moedas
 
 Usecase 03 - Sequence Diagram - cadastrar vantagem
 
-Usecase 04 - Sequence Diagram0 - cadastro aluno
+Usecase 04 - Sequence Diagram0 - cadastro aluno e Sequence Diagram - cadastro empresa
 
 Usecase 05 - Sequence Diagram0 - resgatar vantagem
 
