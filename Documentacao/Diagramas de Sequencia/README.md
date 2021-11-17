@@ -10,6 +10,6 @@ Usecase 04 - Sequence Diagram0 - cadastro aluno
 
 Usecase 05 - Sequence Diagram0 - resgatar vantagem
 
-Usecase 06 - 
+Usecase 06 - Diagrama de Sequencia - Trocar Moedas
 
 Usecase 07 - Sequence Diagram - consultar conta
