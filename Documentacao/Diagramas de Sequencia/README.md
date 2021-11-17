@@ -12,4 +12,4 @@ Usecase 05 -
 
 Usecase 06 - 
 
-Usecase 07 - 
+Usecase 07 - Sequence Diagram - consultar conta
