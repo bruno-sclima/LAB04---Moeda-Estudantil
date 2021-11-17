@@ -8,7 +8,7 @@ Usecase 03 - Sequence Diagram - cadastrar vantagem
 
 Usecase 04 - Sequence Diagram0 - cadastro aluno
 
-Usecase 05 - 
+Usecase 05 - Sequence Diagram0 - resgatar vantagem
 
 Usecase 06 - 
 
