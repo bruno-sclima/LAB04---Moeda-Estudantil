@@ -1,21 +1,45 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
 <head>
-<meta charset="UTF-8" />
-<title>Sistema de Moeda Estudantil</title>
-<link rel="stylesheet"href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <meta charset="UTF-8" />
+    <title>Sistema de Moeda Estudantil</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
+
 <body>
-<header>
-<nav>
-<ul><li><a href="/add-edit-aluno">Cadastrar como aluno</a></li>
-<li><a  href="#">Cadastrar como empresa parceira</a></li>
-<li><a href="/login">Logar</a></li>
-<li><a href="/list-alunos">Listar alunos</a></li>
-</ul>
-</nav>
-</header>
-<h1>Bem Vindo</h1>
-<footer>
-</footer>
+    <header>
+        <nav style="background: #111;">
+            <ul style="display: flex; flex-direction: row; justify-content: space-around; padding: 2rem; list-style: none;">
+                <li><a style="color: white;" style:hover="color: red; text-decoration: none" href="/add-edit-aluno">Cadastrar como aluno</a></li>
+                <li><a style="color: white;" href="/add-edit-empresa">Cadastrar como empresa parceira</a></li>
+                <li><a style="color: white;" href="/login-aluno">LogIn aluno</a></li>
+                <li><a style="color: white;" href="/login-empresa">LogIn empresa</a></li>
+                <li><a style="color: white;" href="/list-alunos">Listar alunos</a></li>
+                 <li><a style="color: white;" href="/list-empresas">Listar empresas</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="col-12" style="display: flex;">
+        <div class="col-4">
+            
+        </div>
+
+        <div class="col-4">
+            <h1 style="display: flex;
+            justify-content: center;
+            font-weight: 900;
+            font-family: sans-serif;
+            color: white;
+            background: #111;
+            padding: 1.5rem;
+            border-radius: 10px;">Bem Vindo</h1>
+        </div>
+
+        <div class="col-4">
+           
+        </div>
+    </div>
+    <footer>
+    </footer>
 </body>

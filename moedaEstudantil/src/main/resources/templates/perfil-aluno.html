@@ -42,12 +42,12 @@
                                 <td th:text="${aluno.email}"></td>
                                 <td th:text="${aluno.nomeUniv}"></td>
                                 <td>
-                                <a th:href="@{/edit/{id}(id=${aluno.id})}" class="btn btn-primary">
+                                <a th:href="@{/edit-aluno/{id}(id=${aluno.id})}" class="btn btn-primary">
                                         <i class="fas fa-user-edit ml-2"></i>
                                     </a>
                                 </td>
                                 <td>
-                                    <a th:href="@{/delete/{id}(id=${aluno.id})}" class="btn btn-danger">
+                                    <a th:href="@{/delete-aluno/{id}(id=${aluno.id})}" class="btn btn-danger">
                                         <i class="fas fa-user-times ml-2"></i>
                                     </a>
                                 </td>

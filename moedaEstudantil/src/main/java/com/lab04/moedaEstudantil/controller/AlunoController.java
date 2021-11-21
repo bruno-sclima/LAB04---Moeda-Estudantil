@@ -1,5 +1,4 @@
 package com.lab04.moedaEstudantil.controller;
-
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -21,7 +20,7 @@ public class AlunoController {
 
 	@Autowired
 	AlunoService service;
-	protected Long id;
+	protected Long id = (long) 0;
 	@GetMapping("list-alunos")
 	public String getAllAlunos(Model model){
 		List<Aluno> list = service.getAllAlunos();
@@ -35,30 +34,39 @@ public class AlunoController {
 	}
 	@GetMapping("home")
 	public String home() {
-		return "index";
+		String url = "index";
+		if(id!=0) url = "homeLog";
+		return url;
 	}
 	@GetMapping("homeLog")
 	public String homeLog() {
 		return "homeLog";
 	}
-	@GetMapping("login")
+	@GetMapping("login-aluno")
 	public String pagLogin(@ModelAttribute("aluno") Aluno aluno) {
 		
-		return "login";
+		return "login-aluno";
 	}
 	@GetMapping("perfilAluno")
 	public String perfil(Model model,@ModelAttribute("aluno") Aluno aluno) {
 		Aluno a = service.getAlunoById(id);
 		model.addAttribute("alunos", a);
-		return "perfil";
+		return "perfil-aluno";
+	}
+	@GetMapping("logOutAluno")
+	public String logOut() {
+		this.id=(long) 0;
+		return "redirect:/";
 	}
 	@RequestMapping(path = "/createAluno", method = RequestMethod.POST)
 	public String createOrUpdateEmployee( Aluno aluno) 
 	{
+		String url = "redirect:/";
+		if(id!=0) url = "redirect:/homeLog";
 		service.createOrUpdateAluno(aluno);
-		return "redirect:/";
+		return url;
 	}
-	@RequestMapping(path = {"/edit", "/edit/{id}"})
+	@RequestMapping(path = {"/edit-aluno", "/edit-aluno/{id}"})
 	public String editAlunoById(Model model, @PathVariable("id") Optional<Long> id){
 		if (id.isPresent()) {
 			Aluno entity = service.getAlunoById(id.get());
@@ -68,9 +76,10 @@ public class AlunoController {
 		}
 		return "add-edit-aluno";
 	}
-	@RequestMapping(path = "/delete/{id}")
+	@RequestMapping(path = "/delete-aluno/{id}")
 	public String deleteAlunoById(Model model, @PathVariable("id") Long id){
 		service.deleteAlunoById(id);
+		this.id =(long) 0;
 		return "redirect:/";
 	}
 

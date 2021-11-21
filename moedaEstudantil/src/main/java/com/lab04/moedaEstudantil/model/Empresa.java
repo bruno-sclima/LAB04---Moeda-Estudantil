@@ -3,6 +3,8 @@ package com.lab04.moedaEstudantil.model;
 import java.util.ArrayList;
 import java.util.List;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
@@ -12,6 +14,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 @Data
 @Entity
+@NoArgsConstructor
 @Table(name="Empresa")
 public class Empresa {
 	 @Id
@@ -21,16 +24,22 @@ public class Empresa {
 	private String nome;
 	 @Column(name="cnpj")
 	private String cnpj;
+	 @Column(name="email")
+	private String email;
+	 @Column(name="senha")
+	private String senha;
 	 @ElementCollection
 	 @Column(name="vantagens")
 	private List<Vantagem> vantagens;
 	 
 	 
-	public Empresa(Long id, String nome, String cnpj) {
-		this.id = id;
-		this.nome = nome;
-		this.cnpj = cnpj;
-		this.vantagens = new ArrayList<>();
+	public Empresa(Long id, String nome, String cnpj, String email, String senha) {
+		this.setId(id);
+		this.setNome(nome);
+		this.setCnpj(cnpj);
+		this.setSenha(senha);
+		this.setVantagens(new ArrayList<>());
+		this.setEmail(email);
 	}
 	
 	
