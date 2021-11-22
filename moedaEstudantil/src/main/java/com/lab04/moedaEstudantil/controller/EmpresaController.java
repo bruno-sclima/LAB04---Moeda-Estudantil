@@ -16,13 +16,17 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.lab04.moedaEstudantil.model.Aluno;
 import com.lab04.moedaEstudantil.model.Empresa;
+import com.lab04.moedaEstudantil.model.Vantagem;
 import com.lab04.moedaEstudantil.service.EmpresaService;
+import com.lab04.moedaEstudantil.service.VantagemService;
 
 @Controller
 public class EmpresaController {
 
 	@Autowired
 	EmpresaService service;
+	@Autowired
+	VantagemService vs;
 	
 	protected Long id = (long)0;
 	
@@ -41,6 +45,17 @@ public class EmpresaController {
 	public String pagLogin(@ModelAttribute("empresa") Aluno aluno) {
 		
 		return "login-empresa";
+	}
+	@GetMapping("home1")
+	public String home() {
+		if(id!=0) {
+			return "homeLogEmp";
+		}
+		return "redirect:/";
+	}
+	@GetMapping("homeLogEmp")
+	public String homeLogEmp() {
+		return "homeLogEmp";
 	}
 	@GetMapping("logOutEmpresa")
 	public String logOutE() {
@@ -88,5 +103,12 @@ public class EmpresaController {
 			id = a.get(0).getId();
 		}
 		return res;
+	}
+	@RequestMapping(path = "/createVantagem", method = RequestMethod.POST)
+	public String createOrUpdateEmployee(Vantagem vantagem) {	
+		String url = "redirect:/";
+		if(id!=0) url = "redirect:/homeLogEmp";
+		vs.createOrUpdateVantagem(vantagem);
+		return url;
 	}
 }

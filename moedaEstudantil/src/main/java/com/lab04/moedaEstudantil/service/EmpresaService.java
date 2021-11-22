@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.lab04.moedaEstudantil.model.Empresa;
+import com.lab04.moedaEstudantil.model.Vantagem;
 import com.lab04.moedaEstudantil.repository.EmpresaRepository;
 
 @Service
@@ -48,6 +49,8 @@ public class EmpresaService {
 				Empresa newEmpresa = empresa.get();
 				newEmpresa.setNome(al.getNome());
 				newEmpresa.setCnpj(al.getCnpj());
+				newEmpresa.setEmail(al.getEmail());
+				newEmpresa.setSenha(al.getSenha());
 				newEmpresa = repository.save(newEmpresa);
 				
 				return newEmpresa;
@@ -58,6 +61,26 @@ public class EmpresaService {
 			}
 		}
 	} 
+	public Empresa addVantagem(Vantagem v, Empresa al){
+		Optional<Empresa> empresa = repository.findById(al.getId());
+		if(empresa.isPresent()) {
+			Empresa ne = empresa.get();
+			ne.getVantagens().add(v);
+			al = repository.save(ne);
+			return al;
+		}
+		else return null;
+	}
+	public Empresa deleteVantagem(Vantagem v, Empresa al){
+		Optional<Empresa> empresa = repository.findById(al.getId());
+		if(empresa.isPresent()) {
+			Empresa ne = empresa.get();
+			ne.getVantagens().remove(v);
+			al = repository.save(ne);
+			return al;
+		}
+		else return null;
+	}
 	
 	public void deleteEmpresaById(Long id) {
 		Optional<Empresa> empresa = repository.findById(id);
