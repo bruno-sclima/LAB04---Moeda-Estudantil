@@ -1,0 +1,12 @@
+DROP TABLE IF EXISTS Professor;
+ 
+CREATE TABLE Professor (
+  id INT AUTO_INCREMENT  PRIMARY KEY,
+  nome VARCHAR(250) NOT NULL,
+  senha VARCHAR(250) NOT NULL,
+  email VARCHAR(250) NOT NULL,
+  departamento VARCHAR(250) NOT NULL,
+  universidade VARCHAR(100) NOT NULL,
+  cpf VARCHAR(100) NOT NULL,
+  moedas INT NOT NULL
+);
