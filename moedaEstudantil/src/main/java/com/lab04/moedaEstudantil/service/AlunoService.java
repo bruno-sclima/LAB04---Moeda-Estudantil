@@ -2,6 +2,8 @@ package com.lab04.moedaEstudantil.service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
+
 import com.lab04.moedaEstudantil.model.Aluno;
 import com.lab04.moedaEstudantil.repository.AlunoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,7 +50,7 @@ public class AlunoService {
 				newAluno.setCurso(al.getCurso());
 				newAluno.setNomeUniv(al.getNomeUniv());
 				newAluno.setSenha(al.getSenha());
-
+				newAluno.setMoedas(al.getMoedas());
 				newAluno = repository.save(newAluno);
 				
 				return newAluno;
@@ -58,6 +60,14 @@ public class AlunoService {
 				return al;
 			}
 		}
+	} 
+	public Aluno updateMoedas(Long id,int quant){
+		List<Aluno> result = (List<Aluno>) repository.findAll();
+		List<Aluno> aux =result.stream().filter(a -> a.getId().equals(id)).collect(Collectors.toList());
+		Aluno a = aux.get(0);
+		a.setMoedas(quant + a.getMoedas());
+		a = repository.save(a);
+		return a;
 	} 
 	
 	public void deleteAlunoById(Long id) {
