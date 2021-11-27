@@ -29,6 +29,8 @@ public class Aluno {
 	private String email;
 	 @Column(name="curso")
 	private String curso;
+	 @Column(name="moedas")
+	private int moedas;
 	 
 	 
 	public Aluno(String nome, String cpf, String senha, String univ, String email, String curso) {
@@ -38,6 +40,7 @@ public class Aluno {
 		this.setNomeUniv(univ);
 		this.setEmail(email);
 		this.setCurso(curso);
+		this.setMoedas(0);
 	}
 
 	
