@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+ 
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Enivar Moedas</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+</head>
+ 
+<body>
+    <div class="container my-5">
+     <p class="my-5">
+     <a href="/homeLP" class="btn btn-primary">
+                <i class="fas fa-user ml-2">Home</i></a>
+            </p>
+        <h3> Envio de Moedas</h3>
+        <div class="card">
+            <div class="card-body">
+                <div class="col-md-10">
+                    <form action="#" th:action="@{/createTransacao}" th:object="${transacao}"
+                                                                       method="post">
+                        <div class="row">
+                           <div class="form-group col-md-8">
+                                <label for="name" class="col-form-label">Motivo</label> 
+                                <input type="text" th:field="*{motivo}" class="form-control"
+                                            id="motivo" placeholder="motivo do envio" />
+                            </div>
+                            <div class="form-group col-md-8">
+                                <label for="name" class="col-form-label">Email Aluno</label> 
+                                <input type="text" th:field="*{aux}" class="form-control"
+                                            id="aux" placeholder="Email do aluno" />
+                            </div>
+                            <div class="form-group col-md-8">
+                                <label for="name" class="col-form-label">Quantidade</label> 
+                                <input type="text" th:field="*{moedas}" class="form-control"
+                                            id="moedas" placeholder="quantidade de moedas" />
+                            </div>
+                            
+                           
+ 
+                            <div class="col-md-6">
+                                <input type="submit" class="btn btn-primary" value=" Submit ">
+                            </div>
+ 
+                            <input type="hidden" id="id" th:field="*{id}">
+     
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+ 
+</html>
