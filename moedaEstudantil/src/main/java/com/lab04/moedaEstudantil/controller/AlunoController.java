@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.lab04.moedaEstudantil.model.Aluno;
+import com.lab04.moedaEstudantil.model.Professor;
+import com.lab04.moedaEstudantil.model.Transacao;
 import com.lab04.moedaEstudantil.service.AlunoService;
 @Controller
 
@@ -20,6 +22,8 @@ public class AlunoController {
 
 	@Autowired
 	AlunoService service;
+	@Autowired
+	TransacaoController tc;
 	protected Long id = (long) 0;
 	@GetMapping("list-alunos")
 	public String getAllAlunos(Model model){
@@ -94,6 +98,25 @@ public class AlunoController {
 			id = a.get(0).getId();
 		}
 		return res;
+	}
+	public Aluno alunoByEmail(String email) {
+		List<Aluno> list = service.getAllAlunos();
+		List<Aluno> a =list.stream().filter(f -> f.getEmail().equals(email)).collect(Collectors.toList());
+		if(a.isEmpty()) return null;
+		else return a.get(0);
+	}
+	public void setMoedas(int quant,String email) {
+		Aluno p = alunoByEmail(email);
+		service.updateMoedas(p.getId(), quant);
+		
+	}
+	@GetMapping("conta-aluno")
+	public String getConta(Model model){
+		List<Transacao> list = tc.getContaAluno(this.id);
+		Aluno aluno = service.getAlunoById(this.id);
+		model.addAttribute("saldo",aluno.getMoedas());
+		model.addAttribute("transacoes", list);
+		return "conta-aluno";
 	}
 
 }
